@@ -1,0 +1,25 @@
+name: Sync to S3
+description: Sync files and directories to an S3 bucket
+inputs:
+  source:
+    description: 'The directory or file path to sync'
+    required: true
+  destination:
+    description: 'The S3 bucket path to sync to'
+    required: true
+  aws_access_key_id:
+    description: 'The AWS access key ID'
+    required: true
+  aws_secret_access_key:
+    description: 'The AWS secret access key'
+    required: true
+runs:
+  using: 'docker'
+  image: 'amazon/aws-cli:2.2.37'
+  args:
+    - /bin/sh
+    - -c
+    - |
+      aws configure set aws_access_key_id ${{ inputs.aws_access_key_id }}
+      aws configure set aws_secret_access_key ${{ inputs.aws_secret_access_key }}
+      aws s3 sync "${{ inputs.source }}" "${{ inputs.destination }}"
