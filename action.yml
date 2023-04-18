@@ -4,9 +4,9 @@ inputs:
 #  source:
 #    description: 'The directory or file path to sync'
 #    required: true
-  destination:
-    description: 'The S3 bucket path to sync to'
-    required: true
+#  destination:
+#    description: 'The S3 bucket path to sync to'
+#    required: true
   aws_access_key_id:
     description: 'The AWS access key ID'
     required: true
