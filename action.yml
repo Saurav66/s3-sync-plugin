@@ -13,6 +13,9 @@ inputs:
   aws_secret_access_key:
     description: 'The AWS secret access key'
     required: true
+  AWS_REGION:
+    description: 'AWS region'
+    required: false
 runs:
   using: 'docker'
   image: 'amazon/aws-cli:2.2.37'
