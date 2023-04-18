@@ -1,0 +1,26 @@
+name: Frontend App Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    env:
+      aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      source: ${{ vars.SOURCE_DIR }}
+      destination: ${{ vars.DEST_DIR }}
+      AWS_REGION: 'ap-south-1'
+      CI: false
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Upload to S3
+        uses: saurav66/s3-sync-plugin@main
