@@ -18,7 +18,7 @@ inputs:
     required: false
 runs:
   using: 'docker'
-  image: 'amazon/aws-cli:2.2.37'
+  image: 'docker://amazon/aws-cli:2.11.13'
   args:
     - /bin/sh
     - -c
